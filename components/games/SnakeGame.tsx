@@ -21,6 +21,7 @@ import {
   type Cell,
   type Direction,
 } from "@/lib/games/snakeLogic";
+import { renderSnakeFrame } from "@/lib/games/snakeRender";
 import { useGameLoop } from "@/lib/hooks/useGameLoop";
 import { useKeyboard } from "@/lib/hooks/useKeyboard";
 import { useLocalBestScore } from "@/lib/hooks/useLocalBestScore";
@@ -79,30 +80,19 @@ export default function SnakeGame() {
       canvas.height = logical * dpr;
     }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const { snake, food } = stateRef.current;
+    const { snake, food, dir } = stateRef.current;
+    const timeMs =
+      typeof performance !== "undefined" ? performance.now() : 0;
 
-    ctx.fillStyle = "#0a0a0f";
-    ctx.fillRect(0, 0, logical, logical);
-
-    ctx.strokeStyle = "#2a2a3e";
-    ctx.lineWidth = 1;
-    for (let i = 0; i <= GRID_SIZE; i += 1) {
-      ctx.beginPath();
-      ctx.moveTo(i * CELL, 0);
-      ctx.lineTo(i * CELL, logical);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(0, i * CELL);
-      ctx.lineTo(logical, i * CELL);
-      ctx.stroke();
-    }
-
-    ctx.fillStyle = "#f54060";
-    ctx.fillRect(food.x * CELL + 1, food.y * CELL + 1, CELL - 2, CELL - 2);
-
-    snake.forEach((seg, i) => {
-      ctx.fillStyle = i === 0 ? "#c8f540" : "#9fcc30";
-      ctx.fillRect(seg.x * CELL + 1, seg.y * CELL + 1, CELL - 2, CELL - 2);
+    renderSnakeFrame({
+      ctx,
+      logicalSize: logical,
+      gridSize: GRID_SIZE,
+      cell: CELL,
+      snake,
+      food,
+      headDirection: dir,
+      timeMs,
     });
   }, []);
 
@@ -126,7 +116,9 @@ export default function SnakeGame() {
   const tick = useCallback(() => {
     if (phaseRef.current !== "playing") return;
     const st = stateRef.current;
-    let { snake, food, dir, pending, eaten } = st;
+    const snake = st.snake;
+    const { pending } = st;
+    let { food, dir, eaten } = st;
 
     if (!opposite(dir, pending)) {
       dir = pending;
@@ -172,8 +164,7 @@ export default function SnakeGame() {
 
     st.snake = newSnake;
     st.food = food;
-    draw();
-  }, [draw, endGame, isMuted]);
+  }, [endGame, isMuted]);
 
   useGameLoop(tick, phase === "playing" ? tickIntervalMs(level) : null);
 
@@ -206,6 +197,19 @@ export default function SnakeGame() {
     draw();
   }, [draw, phase]);
 
+  useEffect(() => {
+    if (phase !== "playing") return;
+    let id = 0;
+    const loop = () => {
+      draw();
+      id = requestAnimationFrame(loop);
+    };
+    id = requestAnimationFrame(loop);
+    return () => {
+      cancelAnimationFrame(id);
+    };
+  }, [draw, phase]);
+
   const startGame = () => {
     resumeAudio();
     const s0 = initialSnake();
@@ -221,7 +225,6 @@ export default function SnakeGame() {
     setScore(0);
     setLevel(1);
     setPhase("playing");
-    requestAnimationFrame(draw);
   };
 
   const submitScore = async () => {
@@ -302,6 +305,7 @@ export default function SnakeGame() {
             ref={canvasRef}
             role="img"
             aria-label={t("canvas_label")}
+            className="border-primary/25 shadow-[0_0_48px_-12px_rgba(200,255,64,0.22)] ring-1 ring-primary/15"
           />
           <AnimatePresence>
             {phase === "idle" ? (
