@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -31,25 +32,27 @@ export default function LocaleSwitcher() {
         }
       />
       <DropdownMenuContent align="end" className="min-w-40">
-        <DropdownMenuLabel>{t("label")}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {routing.locales.map((loc) => (
-          <DropdownMenuItem
-            key={loc}
-            onClick={() => {
-              router.replace(pathname, { locale: loc });
-            }}
-          >
-            <span className="flex flex-1 items-center gap-2">
-              {locale === loc ? (
-                <CheckIcon className="size-4 text-primary" />
-              ) : (
-                <span className="size-4" aria-hidden />
-              )}
-              {t(loc)}
-            </span>
-          </DropdownMenuItem>
-        ))}
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>{t("label")}</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          {routing.locales.map((loc) => (
+            <DropdownMenuItem
+              key={loc}
+              onClick={() => {
+                router.replace(pathname, { locale: loc });
+              }}
+            >
+              <span className="flex flex-1 items-center gap-2">
+                {locale === loc ? (
+                  <CheckIcon className="size-4 text-primary" />
+                ) : (
+                  <span className="size-4" aria-hidden />
+                )}
+                {t(loc)}
+              </span>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );
