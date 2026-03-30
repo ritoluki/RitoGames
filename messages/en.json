@@ -46,11 +46,24 @@
     "en": "English",
     "ja": "日本語"
   },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "subtitle": "Top 10 high scores per game — auto-refreshes every 30 seconds.",
+    "game_filter": "Choose game",
+    "rank": "#",
+    "player": "Player",
+    "score": "Score",
+    "level": "Level",
+    "date": "Time",
+    "empty": "No scores for this game yet.",
+    "loading": "Loading leaderboard…",
+    "refreshing": "Updating…",
+    "error": "Could not load leaderboard ({code}).",
+    "retry": "Retry"
+  },
   "pages": {
     "snake_title": "Snake",
     "snake_body": "The game is in development — coming soon.",
-    "leaderboard_title": "Leaderboard",
-    "leaderboard_body": "Rankings will appear here.",
     "about_title": "About",
     "about_body": "ARCADIA — mini games in the browser, no install required."
   }

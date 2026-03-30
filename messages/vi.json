@@ -46,11 +46,24 @@
     "en": "English",
     "ja": "日本語"
   },
+  "leaderboard": {
+    "title": "Bảng xếp hạng",
+    "subtitle": "Top 10 điểm cao theo từng game — tự làm mới mỗi 30 giây.",
+    "game_filter": "Chọn game",
+    "rank": "#",
+    "player": "Người chơi",
+    "score": "Điểm",
+    "level": "Cấp",
+    "date": "Thời gian",
+    "empty": "Chưa có điểm nào cho game này.",
+    "loading": "Đang tải bảng xếp hạng…",
+    "refreshing": "Đang cập nhật…",
+    "error": "Không tải được bảng xếp hạng ({code}).",
+    "retry": "Thử lại"
+  },
   "pages": {
     "snake_title": "Rắn săn mồi",
     "snake_body": "Trò chơi đang được hoàn thiện — sắp ra mắt.",
-    "leaderboard_title": "Bảng xếp hạng",
-    "leaderboard_body": "Bảng xếp hạng sẽ hiển thị tại đây.",
     "about_title": "Giới thiệu",
     "about_body": "ARCADIA — cổng mini game chạy trên trình duyệt, không cần cài đặt."
   }
