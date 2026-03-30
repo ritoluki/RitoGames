@@ -46,6 +46,25 @@
     "en": "English",
     "ja": "日本語"
   },
+  "game": {
+    "score": "Score",
+    "best": "Best (local)",
+    "level": "Level",
+    "game_over": "Game over",
+    "play_again": "Play again",
+    "start": "Start",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "player_name": "Display name",
+    "player_placeholder": "Guest",
+    "submit_score": "Submit score",
+    "save_score_success": "Score saved!",
+    "save_score_error": "Could not save score.",
+    "canvas_label": "Snake game",
+    "tap_start": "Press Start to play",
+    "controls_hint": "Arrow keys or WASD to move",
+    "snake_intro": "Eat food, avoid walls and your tail — +10 per food, level increases as you eat."
+  },
   "leaderboard": {
     "title": "Leaderboard",
     "subtitle": "Top 10 high scores per game — auto-refreshes every 30 seconds.",
@@ -63,7 +82,6 @@
   },
   "pages": {
     "snake_title": "Snake",
-    "snake_body": "The game is in development — coming soon.",
     "about_title": "About",
     "about_body": "ARCADIA — mini games in the browser, no install required."
   }

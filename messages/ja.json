@@ -46,6 +46,25 @@
     "en": "English",
     "ja": "日本語"
   },
+  "game": {
+    "score": "スコア",
+    "best": "ベスト（端末）",
+    "level": "レベル",
+    "game_over": "ゲームオーバー",
+    "play_again": "もう一度",
+    "start": "スタート",
+    "mute": "ミュート",
+    "unmute": "音を出す",
+    "player_name": "表示名",
+    "player_placeholder": "Guest",
+    "submit_score": "スコアを送信",
+    "save_score_success": "スコアを保存しました",
+    "save_score_error": "スコアを保存できませんでした",
+    "canvas_label": "スネークゲーム",
+    "tap_start": "スタートを押してプレイ",
+    "controls_hint": "矢印キーまたは WASD で移動",
+    "snake_intro": "餌を食べ、壁と体に当たらないように — 餌ごと +10、レベルは進行に応じて上がります。"
+  },
   "leaderboard": {
     "title": "ランキング",
     "subtitle": "ゲームごとのトップ10 — 30秒ごとに自動更新。",
@@ -63,7 +82,6 @@
   },
   "pages": {
     "snake_title": "スネーク",
-    "snake_body": "ゲームは開発中です。もうしばらくお待ちください。",
     "about_title": "概要",
     "about_body": "ARCADIA — ブラウザで遊べるミニゲーム。インストール不要。"
   }

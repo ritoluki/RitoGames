@@ -46,6 +46,25 @@
     "en": "English",
     "ja": "日本語"
   },
+  "game": {
+    "score": "Điểm",
+    "best": "Kỷ lục (máy)",
+    "level": "Cấp",
+    "game_over": "Trò chơi kết thúc",
+    "play_again": "Chơi lại",
+    "start": "Bắt đầu",
+    "mute": "Tắt âm",
+    "unmute": "Bật âm",
+    "player_name": "Tên hiển thị",
+    "player_placeholder": "Guest",
+    "submit_score": "Gửi điểm",
+    "save_score_success": "Đã lưu điểm!",
+    "save_score_error": "Không lưu được điểm.",
+    "canvas_label": "Game Snake",
+    "tap_start": "Bấm Bắt đầu để chơi",
+    "controls_hint": "Mũi tên hoặc WASD để di chuyển",
+    "snake_intro": "Ăn mồi, tránh tường và thân rắn — mỗi mồi +10 điểm, cấp tăng theo số mồi đã ăn."
+  },
   "leaderboard": {
     "title": "Bảng xếp hạng",
     "subtitle": "Top 10 điểm cao theo từng game — tự làm mới mỗi 30 giây.",
@@ -63,7 +82,6 @@
   },
   "pages": {
     "snake_title": "Rắn săn mồi",
-    "snake_body": "Trò chơi đang được hoàn thiện — sắp ra mắt.",
     "about_title": "Giới thiệu",
     "about_body": "ARCADIA — cổng mini game chạy trên trình duyệt, không cần cài đặt."
   }
