@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "ARCADIA — Mini Game Portal",
+    "description": "Chơi mini game trực tiếp trên trình duyệt. Không cài đặt."
+  },
+  "nav": {
+    "games": "Trò chơi",
+    "leaderboard": "Bảng xếp hạng",
+    "about": "Giới thiệu",
+    "brand": "ARCADIA"
+  },
+  "home": {
+    "hero_tag": "4 trò chơi có sẵn",
+    "hero_title": "Chơi Mini Game Online.",
+    "hero_desc": "Bộ sưu tập game nhỏ ngay trên trình duyệt — nhanh, nhẹ, không cài thêm gì.",
+    "games_heading": "Danh sách game"
+  },
+  "games": {
+    "snake": {
+      "name": "Rắn săn mồi",
+      "desc": "Điều khiển rắn, ăn mồi và tránh va chạm."
+    },
+    "breakout": {
+      "name": "Breakout",
+      "desc": "Phá gạch và giữ bóng không rơi."
+    },
+    "memory": {
+      "name": "Ghi nhớ",
+      "desc": "Lật thẻ và ghép đôi đúng."
+    },
+    "asteroid": {
+      "name": "Asteroid",
+      "desc": "Bay và né thiên thạch trong không gian."
+    }
+  },
+  "common": {
+    "play": "Chơi ngay",
+    "coming_soon": "Sắp có"
+  },
+  "footer": {
+    "tagline": "Mini game trong trình duyệt — ARCADIA"
+  },
+  "locale": {
+    "label": "Ngôn ngữ",
+    "vi": "Tiếng Việt",
+    "en": "English",
+    "ja": "日本語"
+  },
+  "pages": {
+    "snake_title": "Rắn săn mồi",
+    "snake_body": "Trò chơi đang được hoàn thiện — sắp ra mắt.",
+    "leaderboard_title": "Bảng xếp hạng",
+    "leaderboard_body": "Bảng xếp hạng sẽ hiển thị tại đây.",
+    "about_title": "Giới thiệu",
+    "about_body": "ARCADIA — cổng mini game chạy trên trình duyệt, không cần cài đặt."
+  }
+}

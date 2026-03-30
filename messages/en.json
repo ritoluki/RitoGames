@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "ARCADIA — Mini Game Portal",
+    "description": "Play mini games in your browser. No install required."
+  },
+  "nav": {
+    "games": "Games",
+    "leaderboard": "Leaderboard",
+    "about": "About",
+    "brand": "ARCADIA"
+  },
+  "home": {
+    "hero_tag": "4 games available",
+    "hero_title": "Play Mini Games Online.",
+    "hero_desc": "A small collection of browser games — fast, lightweight, nothing to install.",
+    "games_heading": "Games"
+  },
+  "games": {
+    "snake": {
+      "name": "Snake",
+      "desc": "Move the snake, eat, and avoid collisions."
+    },
+    "breakout": {
+      "name": "Breakout",
+      "desc": "Break bricks and keep the ball in play."
+    },
+    "memory": {
+      "name": "Memory",
+      "desc": "Flip cards and find matching pairs."
+    },
+    "asteroid": {
+      "name": "Asteroid",
+      "desc": "Dodge asteroids in space."
+    }
+  },
+  "common": {
+    "play": "Play",
+    "coming_soon": "Coming soon"
+  },
+  "footer": {
+    "tagline": "Mini games in the browser — ARCADIA"
+  },
+  "locale": {
+    "label": "Language",
+    "vi": "Tiếng Việt",
+    "en": "English",
+    "ja": "日本語"
+  },
+  "pages": {
+    "snake_title": "Snake",
+    "snake_body": "The game is in development — coming soon.",
+    "leaderboard_title": "Leaderboard",
+    "leaderboard_body": "Rankings will appear here.",
+    "about_title": "About",
+    "about_body": "ARCADIA — mini games in the browser, no install required."
+  }
+}

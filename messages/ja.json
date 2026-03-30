@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "ARCADIA — ミニゲームポータル",
+    "description": "ブラウザでミニゲームをプレイ。インストール不要。"
+  },
+  "nav": {
+    "games": "ゲーム",
+    "leaderboard": "ランキング",
+    "about": "概要",
+    "brand": "ARCADIA"
+  },
+  "home": {
+    "hero_tag": "4タイトル",
+    "hero_title": "ブラウザでミニゲーム。",
+    "hero_desc": "軽量なミニゲーム集。インストールは不要です。",
+    "games_heading": "ゲーム一覧"
+  },
+  "games": {
+    "snake": {
+      "name": "スネーク",
+      "desc": "蛇を操作して餌を食べ、衝突を避けよう。"
+    },
+    "breakout": {
+      "name": "ブロック崩し",
+      "desc": "ブロックを壊し、ボールを落とさない。"
+    },
+    "memory": {
+      "name": "神経衰弱",
+      "desc": "カードをめくってペアを揃えよう。"
+    },
+    "asteroid": {
+      "name": "アステロイド",
+      "desc": "隕石を避けて宇宙を進む。"
+    }
+  },
+  "common": {
+    "play": "プレイ",
+    "coming_soon": "近日公開"
+  },
+  "footer": {
+    "tagline": "ブラウザでミニゲーム — ARCADIA"
+  },
+  "locale": {
+    "label": "言語",
+    "vi": "Tiếng Việt",
+    "en": "English",
+    "ja": "日本語"
+  },
+  "pages": {
+    "snake_title": "スネーク",
+    "snake_body": "ゲームは開発中です。もうしばらくお待ちください。",
+    "leaderboard_title": "ランキング",
+    "leaderboard_body": "ランキングはここに表示されます。",
+    "about_title": "概要",
+    "about_body": "ARCADIA — ブラウザで遊べるミニゲーム。インストール不要。"
+  }
+}
