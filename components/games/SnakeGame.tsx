@@ -2,6 +2,7 @@
 
 import { useQueryClient } from "@tanstack/react-query";
 import confetti from "canvas-confetti";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "motion/react";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -9,7 +10,6 @@ import CountUp from "react-countup";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import GameCanvas from "@/components/games/GameCanvas";
 import {
   GRID_SIZE,
   POINTS_PER_FOOD,
@@ -21,24 +21,27 @@ import {
   type Cell,
   type Direction,
 } from "@/lib/games/snakeLogic";
-import { renderSnakeFrame } from "@/lib/games/snakeRender";
+import type { SnakeGameRefState } from "@/lib/games/snakeTypes";
 import { useGameLoop } from "@/lib/hooks/useGameLoop";
 import { useKeyboard } from "@/lib/hooks/useKeyboard";
 import { useLocalBestScore } from "@/lib/hooks/useLocalBestScore";
 import { playDieSound, playEatSound, resumeAudio } from "@/lib/sounds/synth";
 import { useGameStore } from "@/lib/store/gameStore";
 
-const CELL = 16;
+const SnakeBoard3D = dynamic(
+  () => import("@/components/games/SnakeBoard3D"),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        className="flex min-h-[min(92vw,420px)] w-full animate-pulse items-center justify-center rounded-xl border border-border bg-card/40"
+        aria-hidden
+      />
+    ),
+  },
+);
 
 type Phase = "idle" | "playing" | "gameover";
-
-interface GameRefState {
-  snake: Cell[];
-  food: Cell;
-  dir: Direction;
-  pending: Direction;
-  eaten: number;
-}
 
 export default function SnakeGame() {
   const t = useTranslations("game");
@@ -46,8 +49,7 @@ export default function SnakeGame() {
   const { isMuted, toggleMute, playerName, setPlayerName } = useGameStore();
   const { best, updateBest } = useLocalBestScore("snake");
 
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<GameRefState>({
+  const stateRef = useRef<SnakeGameRefState>({
     snake: initialSnake(),
     food: randomFood(initialSnake()),
     dir: { dx: 1, dy: 0 },
@@ -67,34 +69,6 @@ export default function SnakeGame() {
   useEffect(() => {
     scoreRef.current = score;
   }, [score]);
-
-  const draw = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
-    const logical = GRID_SIZE * CELL;
-    if (canvas.width !== logical * dpr) {
-      canvas.width = logical * dpr;
-      canvas.height = logical * dpr;
-    }
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const { snake, food, dir } = stateRef.current;
-    const timeMs =
-      typeof performance !== "undefined" ? performance.now() : 0;
-
-    renderSnakeFrame({
-      ctx,
-      logicalSize: logical,
-      gridSize: GRID_SIZE,
-      cell: CELL,
-      snake,
-      food,
-      headDirection: dir,
-      timeMs,
-    });
-  }, []);
 
   const endGame = useCallback(() => {
     const finalScore = scoreRef.current;
@@ -193,23 +167,6 @@ export default function SnakeGame() {
     phase === "playing",
   );
 
-  useEffect(() => {
-    draw();
-  }, [draw, phase]);
-
-  useEffect(() => {
-    if (phase !== "playing") return;
-    let id = 0;
-    const loop = () => {
-      draw();
-      id = requestAnimationFrame(loop);
-    };
-    id = requestAnimationFrame(loop);
-    return () => {
-      cancelAnimationFrame(id);
-    };
-  }, [draw, phase]);
-
   const startGame = () => {
     resumeAudio();
     const s0 = initialSnake();
@@ -301,12 +258,13 @@ export default function SnakeGame() {
 
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
         <div className="relative mx-auto w-full max-w-[min(92vw,420px)]">
-          <GameCanvas
-            ref={canvasRef}
+          <div
             role="img"
             aria-label={t("canvas_label")}
-            className="border-primary/25 shadow-[0_0_48px_-12px_rgba(200,255,64,0.22)] ring-1 ring-primary/15"
-          />
+            className="overflow-hidden rounded-xl border border-primary/25 shadow-[0_0_48px_-12px_rgba(200,255,64,0.22)] ring-1 ring-primary/15"
+          >
+            <SnakeBoard3D stateRef={stateRef} className="aspect-square w-full" />
+          </div>
           <AnimatePresence>
             {phase === "idle" ? (
               <motion.div
